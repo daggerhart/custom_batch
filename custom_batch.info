@@ -1,0 +1,5 @@
+name = "Custom Batch"
+description = "Custom module for easy batch operations"
+core = 6.x
+version = 6.x-0.1
+package = "Custom"

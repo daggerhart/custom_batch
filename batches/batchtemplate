@@ -1,0 +1,42 @@
+<?php
+
+/*
+ * Psuedo hook information for automated batch form population
+ */
+$batch = array(
+  // (*required) - key for all functions. file name must be _custom_batch.[name].inc
+  'name'  => '[name]', 
+  // (optional) - title for fieldgroup on admin page
+  'title' => '',
+  // (optional) - description for admin page
+  'description' => '',
+  // (optional) - submit button text for admin page
+  'submit' => 'Start',
+);
+
+/*
+ * Gather data to batch, normally a sql query
+ *
+ * @return array
+ */
+function _custom_batch_[name]_data(){
+  $data = array();
+  
+  $sql = "";
+  $results = db_query($sql);
+  while($row = db_fetch_object($results)){
+    $data[] = $row;
+  }
+  
+  return $data;
+}
+
+/*
+ * Single row of batch op
+ *
+ * @param array $item
+ *    - whatever makes up the array of items in the _data function
+ */ 
+function _custom_batch_[name]_row($item) {
+  // do work here
+}

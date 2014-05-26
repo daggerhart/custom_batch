@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function custom_batch_menu() {
+  $items = array();
+  $items['admin/settings/custom_batch'] = array(
+    'title' => 'Custom Batch Processesing',
+    'description' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_batch_batch_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'custom_batch.forms.inc',
+  );
+  
+  // tabs
+  $items['admin/settings/custom_batch/process'] = $items['admin/settings/custom_batch'];
+  $items['admin/settings/custom_batch/process']['type'] = MENU_DEFAULT_LOCAL_TASK;
+  
+  // settings
+  $items['admin/settings/custom_batch/settings'] = array(
+    'title' => 'Custom Batch Settings',
+    'description' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_batch_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'custom_batch.forms.inc',
+  );
+
+  return $items;
+}
+
